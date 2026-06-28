@@ -3,75 +3,14 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
 model User {
   id          String   @id @default(cuid())
   email       String   @unique
-  name        String?
   password    String
-
+  name        String?
   createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-
-  resumes     Resume[]
-  assessments Assessment[]
-}
-
-model Resume {
-  id           String   @id @default(cuid())
-  userId       String
-
-  originalName String
-  fileUrl      String
-
-  parsedData   Json?
-
-  createdAt    DateTime @default(now())
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-}
-
-model Assessment {
-
-  id String @id @default(cuid())
-
-  userId String
-
-  resumeId String?
-
-  targetRole String
-
-  overallScore Int
-
-  skillGaps Json
-
-  aiFeedback String
-
-  createdAt DateTime @default(now())
-
-  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
-
-  resume Resume? @relation(fields:[resumeId],references:[id],onDelete:SetNull)
-
-}
-
-model Roadmap{
-
-  id String @id @default(cuid())
-
-  userId String
-
-  assessmentId String?
-
-  roadmapData Json
-
-  createdAt DateTime @default(now())
-
-  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
-
-  assessment Assessment? @relation(fields:[assessmentId],references:[id],onDelete:SetNull)
-
 }

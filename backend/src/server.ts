@@ -5,6 +5,9 @@ import * as dotenv from "dotenv";
 import authRoutes from "./routes/auth";
 import assessmentRoutes from "./routes/assessment";
 import roadmapRoutes from "./routes/roadmap";
+import resumeRoutes from "./routes/resume";
+import resourceRoutes from "./routes/resources";
+import projectRoutes from "./routes/projects";
 
 dotenv.config();
 
@@ -16,8 +19,9 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/assessment", assessmentRoutes);
 app.use("/api/roadmap", roadmapRoutes);
-import resumeRoutes from "./routes/resume";
-app.use("/api/resume",resumeRoutes);
+app.use("/api/resume", resumeRoutes);
+app.use("/api/resources", resourceRoutes);
+app.use("/api/projects", projectRoutes);
 
 app.get("/", (_, res) => {
   res.json({
