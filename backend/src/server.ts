@@ -8,6 +8,9 @@ import roadmapRoutes from "./routes/roadmap";
 import resumeRoutes from "./routes/resume";
 import resourceRoutes from "./routes/resources";
 import projectRoutes from "./routes/projects";
+import readinessRoutes from "./routes/readiness";
+import interviewRoutes from "./routes/interview";
+import healthRoutes from "./routes/health";
 
 dotenv.config();
 
@@ -22,11 +25,15 @@ app.use("/api/roadmap", roadmapRoutes);
 app.use("/api/resume", resumeRoutes);
 app.use("/api/resources", resourceRoutes);
 app.use("/api/projects", projectRoutes);
+app.use("/api/readiness", readinessRoutes);
+app.use("/api/interview", interviewRoutes);
+app.use("/api/health", healthRoutes);
 
 app.get("/", (_, res) => {
   res.json({
     project: "UpSkillX API",
     status: "Running",
+    version: "1.0.0",
   });
 });
 

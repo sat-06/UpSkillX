@@ -1,39 +1,99 @@
 import { Router } from "express";
-
 import upload from "../config/multer";
 
-import { extractPDFText } from "../services/pdf.service";
+const router = Router();
 
-const router=Router();
+router.post("/", upload.single("resume"), async (req, res) => {
 
-router.post(
+    const { targetRole } = req.body;
 
-    "/",
+    res.json({
 
-    upload.single("resume"),
+        summary:
+            "Your resume demonstrates a solid programming foundation with good problem-solving ability.",
 
-    async(req,res)=>{
+        readiness: 72,
 
-        if(!req.file){
+        targetRole,
 
-            return res.status(400).json({
+        skills: [
+            "Python",
+            "C++",
+            "SQL",
+            "Machine Learning",
+            "HTML",
+            "CSS"
+        ],
 
-                message:"Resume missing"
+        missingSkills: [
+            "React",
+            "Node.js",
+            "Docker",
+            "AWS",
+            "System Design"
+        ],
 
-            });
+        roadmap: [
 
-        }
+            {
+                week: 1,
+                topic: "React Fundamentals"
+            },
 
-        const text=await extractPDFText(req.file.path);
+            {
+                week: 2,
+                topic: "Node.js + Express"
+            },
 
-        res.json({
+            {
+                week: 3,
+                topic: "Docker"
+            },
 
-            extractedText:text
+            {
+                week: 4,
+                topic: "AWS Basics"
+            }
 
-        });
+        ],
 
-    }
+        resources: [
 
-);
+            {
+                title: "React Official Docs"
+            },
+
+            {
+                title: "NodeJS Official Docs"
+            },
+
+            {
+                title: "Docker Documentation"
+            }
+
+        ],
+
+        projects: [
+
+            {
+                title: "AI Resume Analyzer",
+                difficulty: "Intermediate"
+            },
+
+            {
+                title: "Career Recommendation System",
+                difficulty: "Advanced"
+            },
+
+            {
+                title: "Job Portal using MERN",
+                difficulty: "Intermediate"
+            }
+
+        ]
+
+    });
+
+});
 
 export default router;
