@@ -1,6 +1,10 @@
 import Sidebar from "@/components/layout/Sidebar";
 import Navbar from "@/components/layout/Navbar";
+
 import StatsCard from "@/components/dashboard/StatsCard";
+import CareerProgress from "@/components/dashboard/CareerProgress";
+import AIRecommendations from "@/components/dashboard/AIRecommendations";
+import ContinueLearning from "@/components/dashboard/ContinueLearning";
 
 import {
   Award,
@@ -12,9 +16,11 @@ import {
 export default function DashboardPage() {
   return (
     <main className="flex min-h-screen bg-slate-950">
+
       <Sidebar />
 
       <div className="flex-1">
+
         <Navbar />
 
         <section className="p-8">
@@ -30,13 +36,13 @@ export default function DashboardPage() {
           <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
 
             <StatsCard
-              title="Readiness Score"
+              title="Readiness"
               value="62%"
               icon={Award}
             />
 
             <StatsCard
-              title="Skills Mastered"
+              title="Skills"
               value="18"
               icon={BookOpen}
             />
@@ -48,15 +54,31 @@ export default function DashboardPage() {
             />
 
             <StatsCard
-              title="Current Streak"
+              title="Streak"
               value="14 Days"
               icon={Flame}
             />
 
           </div>
 
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+
+            <CareerProgress />
+
+            <AIRecommendations />
+
+          </div>
+
+          <div className="mt-8">
+
+            <ContinueLearning />
+
+          </div>
+
         </section>
+
       </div>
+
     </main>
   );
 }

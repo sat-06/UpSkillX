@@ -12,7 +12,7 @@ export default function StatsCard({
   icon: Icon,
 }: StatsCardProps) {
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 hover:border-indigo-500 transition-all duration-300">
+    <div className="rounded-2xl border border-slate-800 bg-slate-900 p-6 transition hover:border-indigo-500">
       <div className="flex items-center justify-between">
         <div>
           <p className="text-sm text-slate-400">{title}</p>

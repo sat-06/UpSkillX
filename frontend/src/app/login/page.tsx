@@ -1,48 +1,68 @@
+"use client";
+
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 export default function LoginPage() {
+  const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Temporary login
+    router.push("/onboarding");
+  };
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-slate-950">
-      <div className="w-full max-w-md rounded-2xl bg-slate-900 p-8 shadow-2xl">
+    <div className="min-h-screen flex items-center justify-center bg-slate-950 px-4">
+      <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900 p-8">
+
         <h1 className="text-3xl font-bold text-white">
           Welcome Back 👋
         </h1>
 
         <p className="mt-2 text-slate-400">
-          Sign in to continue to UpSkillX
+          Login to continue.
         </p>
 
-        <form className="mt-8 space-y-5">
+        <form onSubmit={handleLogin} className="mt-8 space-y-5">
 
-          <div>
-            <label className="block text-sm text-slate-300 mb-2">
-              Email
-            </label>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white"
+          />
 
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white outline-none focus:border-indigo-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm text-slate-300 mb-2">
-              Password
-            </label>
-
-            <input
-              type="password"
-              placeholder="Enter password"
-              className="w-full rounded-lg border border-slate-700 bg-slate-800 px-4 py-3 text-white outline-none focus:border-indigo-500"
-            />
-          </div>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-white"
+          />
 
           <button
-            className="w-full rounded-lg bg-indigo-600 py-3 text-white font-semibold hover:bg-indigo-700 transition"
+            type="submit"
+            className="w-full rounded-xl bg-indigo-600 py-3 text-white font-semibold hover:bg-indigo-700"
           >
             Login
           </button>
 
         </form>
+
+        <p className="mt-6 text-center text-slate-400">
+          Don't have an account?{" "}
+          <Link href="/signup" className="text-indigo-400">
+            Sign Up
+          </Link>
+        </p>
+
       </div>
     </div>
   );

@@ -1,33 +1,37 @@
 import Link from "next/link";
 
-const menuItems = [
-  "Dashboard",
-  "Assessment",
-  "Roadmap",
-  "Resources",
-  "Projects",
-  "Readiness",
-  "Profile",
+const links = [
+  ["Dashboard", "/dashboard"],
+  ["Assessment", "/assessment"],
+  ["Roadmap", "/roadmap"],
+  ["Resources", "/resources"],
+  ["Projects", "/projects"],
+  ["Readiness", "/readiness"],
+  ["Profile", "/profile"],
 ];
 
 export default function Sidebar() {
   return (
-    <aside className="w-64 min-h-screen bg-slate-900 border-r border-slate-800 text-white p-6">
-      <h1 className="text-3xl font-bold text-indigo-500 mb-10">
+    <aside className="h-screen w-64 bg-slate-900 border-r border-slate-800 p-6 text-white">
+
+      <h1 className="mb-10 text-3xl font-bold text-indigo-500">
         UpSkillX
       </h1>
 
       <nav className="space-y-3">
-        {menuItems.map((item) => (
+
+        {links.map(([title, url]) => (
           <Link
-            key={item}
-            href="#"
-            className="block rounded-lg px-4 py-3 hover:bg-slate-800 transition"
+            key={title}
+            href={url}
+            className="block rounded-lg px-4 py-3 hover:bg-slate-800"
           >
-            {item}
+            {title}
           </Link>
         ))}
+
       </nav>
+
     </aside>
   );
 }
