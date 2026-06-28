@@ -1,0 +1,28 @@
+# Dependencies
+**/node_modules
+
+# Next.js
+frontend/.next
+frontend/out
+
+# Environment files
+**/.env
+**/.env.local
+
+# Build
+**/dist
+**/build
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode
+
+# Prisma generated files (optional)
+backend/prisma/dev.db
