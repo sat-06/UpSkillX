@@ -16,6 +16,8 @@ app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/assessment", assessmentRoutes);
 app.use("/api/roadmap", roadmapRoutes);
+import resumeRoutes from "./routes/resume";
+app.use("/api/resume",resumeRoutes);
 
 app.get("/", (_, res) => {
   res.json({

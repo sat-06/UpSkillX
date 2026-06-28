@@ -1,21 +1,17 @@
 import { Router } from "express";
 
+import { calculateReadiness } from "../services/readiness.service";
+
 const router = Router();
 
 router.post("/", async (req, res) => {
-  const { skills } = req.body;
 
-  const readiness = Math.min((skills?.length || 0) * 10, 100);
+    const { skills } = req.body;
 
-  res.json({
-    readiness,
-    missingSkills: [
-      "React",
-      "Node.js",
-      "Docker",
-      "AWS"
-    ]
-  });
+    const result = calculateReadiness(skills);
+
+    res.json(result);
+
 });
 
 export default router;
